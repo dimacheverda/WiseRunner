@@ -16,10 +16,7 @@ class WorkoutViewController: UIViewController {
   @IBOutlet weak var timeLabel: UILabel!
   @IBOutlet weak var speedLabel: UILabel!
   
-  var distance: CLLocationDistance = 0.0
-  var seconds: Int = 0
-  let locationManager = CLLocationManager()
-  var locations: [CLLocation] = []
+  var workoutSession = WorkoutSession()
   var timer: NSTimer!
   
   var needToRecenterMapView = true
@@ -29,14 +26,10 @@ class WorkoutViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    setupLocationUpdates()
+    startWorkoutSession()
     setupTimer()
     setupMapView()
     
-  }
-  
-  deinit {
-    timer.invalidate()
   }
   
   // MARK: - Setup
@@ -47,13 +40,8 @@ class WorkoutViewController: UIViewController {
     mapView.showsUserLocation = true
   }
 
-  func setupLocationUpdates() {
-    locationManager.requestAlwaysAuthorization()
-    locationManager.delegate = self
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    locationManager.activityType = .Fitness
-    locationManager.distanceFilter = 10
-    locationManager.startUpdatingLocation()
+  func startWorkoutSession() {
+    workoutSession.startWorkout()
   }
   
   func setupTimer() {
@@ -67,7 +55,8 @@ class WorkoutViewController: UIViewController {
   // MARK: - Actions
   
   @IBAction func endWorkoutButtonPressed(sender: AnyObject) {
-    
+    workoutSession.endWorkout()
+    timer.invalidate()
   }
   
   @IBAction func recenterButtonPressed(sender: AnyObject) {
@@ -75,41 +64,33 @@ class WorkoutViewController: UIViewController {
   }
   
   func timerTick() {
-    seconds += 1
+    workoutSession.seconds += 1
     
-    timeLabel.text = "\(seconds) seconds"
-    distanceLabel.text = String(format: "%.1f meters", distance)
-    if let lastLocation = locations.last {
+    timeLabel.text = "\(workoutSession.seconds) seconds"
+    distanceLabel.text = String(format: "%.1f meters", workoutSession.distance)
+    if let lastLocation = workoutSession.locations.last {
       speedLabel.text = String(format: "%.1f mps", lastLocation.speed)
     }
   }
+  
+  // MARK: - Private
   
   private func centerMapView(at location: MKUserLocation) {
     let span = 0.005
     mapView.setRegion(MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(span, span)), animated: true)
   }
-  
-}
 
-extension WorkoutViewController: CLLocationManagerDelegate {
-  
-  func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    print("CLLocation's: \(locations)")
+  private func polyline(for locations: [CLLocation]) -> MKPolyline {
+    var coordinates: [CLLocationCoordinate2D] = []
     
     for location in locations {
-      if location.horizontalAccuracy < 20 {
-        
-        if self.locations.count > 0 {
-          distance += self.locations.last!.distanceFromLocation(location)
-          print("Distance: \(distance)")
-        }
-        
-        self.locations.append(location)
-      }
+      coordinates.append(location.coordinate)
     }
+    
+    return MKPolyline(coordinates: &coordinates, count: coordinates.count)
   }
-  
 }
+
 
 extension WorkoutViewController: MKMapViewDelegate {
   
@@ -120,6 +101,21 @@ extension WorkoutViewController: MKMapViewDelegate {
     
     centerMapView(at: userLocation)
     needToRecenterMapView = false
+  }
+  
+  func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    
+    if let polyline = overlay as? MKPolyline {
+      let polylineRenderer = MKPolylineRenderer(overlay: polyline)
+      polylineRenderer.strokeColor = UIColor.blueColor()
+      polylineRenderer.lineWidth = 3
+      
+      return polylineRenderer
+    }
+  
+    let renderer = MKOverlayRenderer(overlay: overlay)
+    
+    return renderer
   }
   
 }
