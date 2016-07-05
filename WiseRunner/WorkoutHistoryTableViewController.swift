@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class WorkoutHistoryTableViewController: UITableViewController {
   
   private let startWorkoutSegueIdentifier = "Start Workout"
+  private let rowHeight: CGFloat = 125.0
+  
+  var workouts: Results<Workout>?
   
   // MARK: - ViewController Life Cycle
   
@@ -18,6 +22,8 @@ class WorkoutHistoryTableViewController: UITableViewController {
     super.viewDidLoad()
     
     setupTableView()
+    
+    fetchWorkout()
   }
   
   override func didReceiveMemoryWarning() {
@@ -27,10 +33,11 @@ class WorkoutHistoryTableViewController: UITableViewController {
   
   // MARK: - Setup
   
-  func setupTableView() {
+  private func setupTableView() {
     let nibName = String(WorkoutCell)
     let nib = UINib(nibName: nibName, bundle: nil)
-    self.tableView.registerNib(nib, forCellReuseIdentifier: nibName)
+    tableView.registerNib(nib, forCellReuseIdentifier: nibName)
+    tableView.rowHeight = rowHeight
   }
   
   // MARK: - Actions
@@ -60,11 +67,24 @@ class WorkoutHistoryTableViewController: UITableViewController {
     self.performSegueWithIdentifier(startWorkoutSegueIdentifier, sender: self);
   }
   
+  // MARK: - Navigations
+  
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == startWorkoutSegueIdentifier {
       
     }
   }
+  
+  // MARK: - Private
+  
+  private func fetchWorkout() {
+    do {
+      workouts = try Realm().objects(Workout.self)
+    } catch {
+      print("Something went wrong during fetching from Realm")
+    }
+  }
+  
 }
 
 // MARK: - Table view data source
@@ -72,11 +92,19 @@ class WorkoutHistoryTableViewController: UITableViewController {
 extension WorkoutHistoryTableViewController {
   
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if workouts != nil {
+      return workouts!.count
+    }
+    
     return 0
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(String(WorkoutCell), forIndexPath: indexPath) as! WorkoutCell
+    
+    if let workout = workouts?[indexPath.row] {
+      cell.configure(with: workout)
+    }
     
     return cell
   }
