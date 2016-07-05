@@ -8,11 +8,13 @@
 
 import Foundation
 import CoreLocation
+import RealmSwift
 
 class WorkoutSession: NSObject {
   
+  var startDate = NSDate()
   var distance: CLLocationDistance = 0.0
-  var seconds: Int = 0
+  var duration: Int = 0
   let locationManager = CLLocationManager()
   var locations: [CLLocation] = []
   
@@ -38,14 +40,43 @@ class WorkoutSession: NSObject {
   // MARK: - Actions
   
   func startWorkout() {
+    startDate = NSDate()
     locationManager.startUpdatingLocation()
   }
   
   func endWorkout() {
     locationManager.stopUpdatingLocation()
+    saveWorkout()
   }
   
   // MARK: - Realm
+  
+  private func saveWorkout() {
+    let workout = Workout()
+    workout.distance = distance
+    workout.startDate = startDate
+    workout.duration = duration
+    
+    for rawLocation in locations {
+      let location = Location()
+      location.latitude = rawLocation.coordinate.latitude
+      location.longitude = rawLocation.coordinate.longitude
+      location.timestamp = rawLocation.timestamp
+      location.speed = rawLocation.speed
+      
+      workout.locations.append(location)
+    }
+    
+    let realm = try! Realm()
+    
+    do {
+      try realm.write({
+        realm.add(workout)
+      })
+    } catch {
+      print("Something went wrong")
+    }
+  }
   
 }
 

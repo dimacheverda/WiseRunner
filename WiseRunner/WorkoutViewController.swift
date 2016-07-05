@@ -57,6 +57,7 @@ class WorkoutViewController: UIViewController {
   @IBAction func endWorkoutButtonPressed(sender: AnyObject) {
     workoutSession.endWorkout()
     timer.invalidate()
+    navigationController?.popViewControllerAnimated(true)
   }
   
   @IBAction func recenterButtonPressed(sender: AnyObject) {
@@ -64,9 +65,9 @@ class WorkoutViewController: UIViewController {
   }
   
   func timerTick() {
-    workoutSession.seconds += 1
+    workoutSession.duration += 1
     
-    timeLabel.text = "\(workoutSession.seconds) seconds"
+    timeLabel.text = "\(workoutSession.duration) seconds"
     distanceLabel.text = String(format: "%.1f meters", workoutSession.distance)
     if let lastLocation = workoutSession.locations.last {
       speedLabel.text = String(format: "%.1f mps", lastLocation.speed)

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2BE2643A1D0C3D7142AB87FE /* Pods_WiseRunner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26298717693CC1BB2EAD4DC7 /* Pods_WiseRunner.framework */; };
 		9FD0FEE11D2BE8D1006C59ED /* WorkoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD0FEE01D2BE8D1006C59ED /* WorkoutSession.swift */; };
+		9FD0FEE31D2C011C006C59ED /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD0FEE21D2C011C006C59ED /* Workout.swift */; };
+		9FD0FEE51D2C0179006C59ED /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD0FEE41D2C0179006C59ED /* Location.swift */; };
 		9FE97EA81D22C11E005CFC7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE97EA71D22C11E005CFC7A /* AppDelegate.swift */; };
 		9FE97EAD1D22C11E005CFC7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FE97EAB1D22C11E005CFC7A /* Main.storyboard */; };
 		9FE97EAF1D22C11E005CFC7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FE97EAE1D22C11E005CFC7A /* Assets.xcassets */; };
@@ -27,6 +29,8 @@
 		26298717693CC1BB2EAD4DC7 /* Pods_WiseRunner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WiseRunner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		552FBBEDDCAA746C0CA08B6C /* Pods-WiseRunner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WiseRunner.release.xcconfig"; path = "Pods/Target Support Files/Pods-WiseRunner/Pods-WiseRunner.release.xcconfig"; sourceTree = "<group>"; };
 		9FD0FEE01D2BE8D1006C59ED /* WorkoutSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutSession.swift; sourceTree = "<group>"; };
+		9FD0FEE21D2C011C006C59ED /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		9FD0FEE41D2C0179006C59ED /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		9FE97EA41D22C11D005CFC7A /* WiseRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiseRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE97EA71D22C11E005CFC7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FE97EAC1D22C11E005CFC7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,6 +77,15 @@
 				552FBBEDDCAA746C0CA08B6C /* Pods-WiseRunner.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		9FD0FEE61D2C029F006C59ED /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				9FD0FEE21D2C011C006C59ED /* Workout.swift */,
+				9FD0FEE41D2C0179006C59ED /* Location.swift */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 		9FE97E9B1D22C11D005CFC7A = {
@@ -144,6 +157,7 @@
 		9FE97EC01D22F9FF005CFC7A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9FD0FEE61D2C029F006C59ED /* Entities */,
 				9FE97ECC1D2301DA005CFC7A /* WorkoutType.swift */,
 				9FD0FEE01D2BE8D1006C59ED /* WorkoutSession.swift */,
 			);
@@ -290,6 +304,8 @@
 			files = (
 				9FE97EA81D22C11E005CFC7A /* AppDelegate.swift in Sources */,
 				9FE97ECD1D2301DA005CFC7A /* WorkoutType.swift in Sources */,
+				9FD0FEE51D2C0179006C59ED /* Location.swift in Sources */,
+				9FD0FEE31D2C011C006C59ED /* Workout.swift in Sources */,
 				9FD0FEE11D2BE8D1006C59ED /* WorkoutSession.swift in Sources */,
 				9FEFC9771D2A9F1D0005CED2 /* WorkoutViewController.swift in Sources */,
 				9FE97EC81D22FFFF005CFC7A /* WorkoutTypeCell.swift in Sources */,
