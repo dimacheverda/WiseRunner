@@ -57,7 +57,7 @@ class WorkoutViewController: UIViewController {
   @IBAction func endWorkoutButtonPressed(sender: AnyObject) {
     workoutSession.endWorkout()
     timer.invalidate()
-    navigationController?.popViewControllerAnimated(true)
+    dismissViewControllerAnimated(true, completion: nil)
   }
   
   @IBAction func recenterButtonPressed(sender: AnyObject) {

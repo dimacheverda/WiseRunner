@@ -50,7 +50,7 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="WiseRunner" id="XaK-dX-mmO"/>
                     <connections>
-                        <segue destination="gNY-Ya-exG" kind="push" identifier="Start Workout" id="mvz-AY-dyU"/>
+                        <segue destination="0F0-Sj-0nf" kind="presentation" identifier="Start Workout" id="mvz-AY-dyU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ed-FP-dgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -148,7 +148,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="NDY-g0-3xU"/>
                         <barButtonItem title="End Workout" id="WL3-X5-67I">
                             <connections>
-                                <action selector="endWorkoutButtonPressed:" destination="gNY-Ya-exG" id="FdJ-7J-7ib"/>
+                                <action selector="endWorkoutButtonPressed:" destination="gNY-Ya-exG" id="EYM-O4-pfn"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="h3l-4O-yEB"/>
@@ -168,6 +168,28 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bbq-Xs-LgJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2438" y="613"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vxS-A8-wVl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="0F0-Sj-0nf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fXA-Xj-vND">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8Cc-4h-guX">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="gNY-Ya-exG" kind="relationship" relationship="rootViewController" id="InD-QT-yc1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l8d-eH-h3Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1626" y="613"/>
         </scene>
