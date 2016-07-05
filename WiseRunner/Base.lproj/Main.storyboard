@@ -29,7 +29,7 @@
         <!--WiseRunner-->
         <scene sceneID="owf-Kl-IXQ">
             <objects>
-                <tableViewController id="xM8-mh-c8W" customClass="StartWorkoutTableViewController" customModule="WiseRunner" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="xM8-mh-c8W" customClass="WorkoutHistoryTableViewController" customModule="WiseRunner" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" id="m6S-go-Kmk">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

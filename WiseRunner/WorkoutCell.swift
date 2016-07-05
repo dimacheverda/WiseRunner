@@ -1,5 +1,5 @@
 //
-//  WorkoutTypeCell.swift
+//  WorkoutCell.swift
 //  WiseRunner
 //
 //  Created by Dima Cheverda on 6/28/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WorkoutTypeCell: UITableViewCell {
+class WorkoutCell: UITableViewCell {
   
   @IBOutlet weak var typeLabel: UILabel!
   
