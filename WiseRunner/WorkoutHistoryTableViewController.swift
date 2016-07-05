@@ -13,6 +13,7 @@ class WorkoutHistoryTableViewController: UITableViewController {
   
   private let startWorkoutSegueIdentifier = "Start Workout"
   private let rowHeight: CGFloat = 125.0
+  private var selectedWorkoutType = WorkoutType.Bicycle
   
   var workouts: Results<Workout>?
   
@@ -64,7 +65,11 @@ class WorkoutHistoryTableViewController: UITableViewController {
   }
   
   private func alertActionHandler(action: UIAlertAction) {
-    self.performSegueWithIdentifier(startWorkoutSegueIdentifier, sender: self);
+    self.performSegueWithIdentifier(startWorkoutSegueIdentifier, sender: self)
+    
+    if let title = action.title {
+      self.selectedWorkoutType = WorkoutType(rawValue: WorkoutType.stringIndex(for: title))!
+    }
   }
   
   // MARK: - Navigations
@@ -72,6 +77,9 @@ class WorkoutHistoryTableViewController: UITableViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == startWorkoutSegueIdentifier {
       
+      let navVC = segue.destinationViewController as! UINavigationController
+      let destVC = navVC.viewControllers.first as! WorkoutViewController
+      destVC.type = selectedWorkoutType
     }
   }
   

@@ -18,6 +18,7 @@ class WorkoutViewController: UIViewController {
   
   var workoutSession = WorkoutSession()
   var timer: NSTimer!
+  var type: WorkoutType!
   
   var needToRecenterMapView = true
   
@@ -30,6 +31,7 @@ class WorkoutViewController: UIViewController {
     setupTimer()
     setupMapView()
     
+    workoutSession.type = type
   }
   
   // MARK: - Setup

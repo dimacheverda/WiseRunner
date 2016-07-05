@@ -27,9 +27,9 @@ class WorkoutCell: UITableViewCell {
   }
   
   func configure(with workout: Workout) {
-    typeLabel.text = "Running"
+    typeLabel.text = WorkoutType.typeString(atIndex: workout.type)
     timeLabel.text = "\(workout.duration) secs"
-    distanceLabel.text = "\(workout.distance) m"
+    distanceLabel.text = String(format: "%.1f meters", workout.distance)
     averageSpeedLabel.text = "average speed"
   }
   

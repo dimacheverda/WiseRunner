@@ -17,6 +17,7 @@ class WorkoutSession: NSObject {
   var duration: Int = 0
   let locationManager = CLLocationManager()
   var locations: [CLLocation] = []
+  var type: WorkoutType!
   
   // MARK: - Init
   
@@ -56,6 +57,7 @@ class WorkoutSession: NSObject {
     workout.distance = distance
     workout.startDate = startDate
     workout.duration = duration
+    workout.type = type.rawValue
     
     for rawLocation in locations {
       let location = Location()
@@ -67,9 +69,9 @@ class WorkoutSession: NSObject {
       workout.locations.append(location)
     }
     
-    let realm = try! Realm()
     
     do {
+      let realm = try Realm()
       try realm.write({
         realm.add(workout)
       })

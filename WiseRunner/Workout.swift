@@ -14,6 +14,7 @@ class Workout: Object {
   dynamic var startDate = NSDate()
   dynamic var distance = 0.0
   dynamic var duration = 0
+  dynamic var type = 0
   let locations = List<Location>()
   
 }
