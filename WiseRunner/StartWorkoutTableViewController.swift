@@ -16,7 +16,6 @@ class StartWorkoutTableViewController: UITableViewController {
     super.viewDidLoad()
     
     setupTableView()
-
   }
   
   override func didReceiveMemoryWarning() {
@@ -35,7 +34,7 @@ class StartWorkoutTableViewController: UITableViewController {
   // MARK: - Actions
   
   @IBAction func startWorkoutButtonPressed(sender: AnyObject) {
-    
+    self.performSegueWithIdentifier("Start Workout", sender: self);
   }
   
 }

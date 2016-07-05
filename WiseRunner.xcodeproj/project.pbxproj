@@ -16,6 +16,9 @@
 		9FE97EC91D22FFFF005CFC7A /* WorkoutTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9FE97EC71D22FFFF005CFC7A /* WorkoutTypeCell.xib */; };
 		9FE97ECB1D2300D6005CFC7A /* StartWorkoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE97ECA1D2300D6005CFC7A /* StartWorkoutTableViewController.swift */; };
 		9FE97ECD1D2301DA005CFC7A /* WorkoutType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE97ECC1D2301DA005CFC7A /* WorkoutType.swift */; };
+		9FEFC9771D2A9F1D0005CED2 /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEFC9761D2A9F1D0005CED2 /* WorkoutViewController.swift */; };
+		9FEFC9791D2AA2EF0005CED2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FEFC9781D2AA2EF0005CED2 /* MapKit.framework */; };
+		9FEFC97B1D2AC1020005CED2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FEFC97A1D2AC1020005CED2 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		9FE97EC71D22FFFF005CFC7A /* WorkoutTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorkoutTypeCell.xib; sourceTree = "<group>"; };
 		9FE97ECA1D2300D6005CFC7A /* StartWorkoutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartWorkoutTableViewController.swift; sourceTree = "<group>"; };
 		9FE97ECC1D2301DA005CFC7A /* WorkoutType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutType.swift; sourceTree = "<group>"; };
+		9FEFC9761D2A9F1D0005CED2 /* WorkoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
+		9FEFC9781D2AA2EF0005CED2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9FEFC97A1D2AC1020005CED2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FEFC97B1D2AC1020005CED2 /* CoreLocation.framework in Frameworks */,
+				9FEFC9791D2AA2EF0005CED2 /* MapKit.framework in Frameworks */,
 				2BE2643A1D0C3D7142AB87FE /* Pods_WiseRunner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,6 +57,8 @@
 		490C982C5B3A916C69F969F7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9FEFC97A1D2AC1020005CED2 /* CoreLocation.framework */,
+				9FEFC9781D2AA2EF0005CED2 /* MapKit.framework */,
 				26298717693CC1BB2EAD4DC7 /* Pods_WiseRunner.framework */,
 			);
 			name = Frameworks;
@@ -98,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				9FE97ECA1D2300D6005CFC7A /* StartWorkoutTableViewController.swift */,
+				9FEFC9761D2A9F1D0005CED2 /* WorkoutViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -180,6 +191,12 @@
 				TargetAttributes = {
 					9FE97EA31D22C11D005CFC7A = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = LQ43N5F28R;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -270,6 +287,7 @@
 			files = (
 				9FE97EA81D22C11E005CFC7A /* AppDelegate.swift in Sources */,
 				9FE97ECD1D2301DA005CFC7A /* WorkoutType.swift in Sources */,
+				9FEFC9771D2A9F1D0005CED2 /* WorkoutViewController.swift in Sources */,
 				9FE97EC81D22FFFF005CFC7A /* WorkoutTypeCell.swift in Sources */,
 				9FE97ECB1D2300D6005CFC7A /* StartWorkoutTableViewController.swift in Sources */,
 			);
@@ -385,6 +403,7 @@
 			baseConfigurationReference = 057A607F1F4C7BE8119318D1 /* Pods-WiseRunner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = WiseRunner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -398,6 +417,7 @@
 			baseConfigurationReference = 552FBBEDDCAA746C0CA08B6C /* Pods-WiseRunner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = WiseRunner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
