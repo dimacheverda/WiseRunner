@@ -17,6 +17,7 @@ class WorkoutHistoryTableViewController: UITableViewController {
   private let rowHeight: CGFloat = 125.0
   private var selectedWorkoutType = WorkoutType.Bicycle
   private var selectedWorkout: Workout?
+  private var notificationToken: NotificationToken? = nil
   
   var workouts: Results<Workout>?
   
@@ -33,6 +34,10 @@ class WorkoutHistoryTableViewController: UITableViewController {
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+  
+  deinit {
+    notificationToken?.stop()
   }
   
   // MARK: - Setup
@@ -100,6 +105,9 @@ class WorkoutHistoryTableViewController: UITableViewController {
   private func fetchWorkout() {
     do {
       workouts = try Realm().objects(Workout.self)
+      notificationToken = workouts?.addNotificationBlock { [weak self] changes in
+        self?.tableView.reloadData()
+      }
     } catch {
       print("Something went wrong during fetching from Realm")
     }
