@@ -62,7 +62,7 @@
         <!--Workout Info View Controller-->
         <scene sceneID="ah0-Cd-Neg">
             <objects>
-                <viewController id="mAT-T2-kQa" customClass="WorkoutInfoViewController" customModule="WiseRunner" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="mAT-T2-kQa" customClass="WorkoutInfoViewController" customModule="WiseRunner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ds8-2n-flE"/>
                         <viewControllerLayoutGuide type="bottom" id="ccX-Uy-IZJ"/>
