@@ -11,6 +11,8 @@
 		9FD0FEE11D2BE8D1006C59ED /* WorkoutSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD0FEE01D2BE8D1006C59ED /* WorkoutSession.swift */; };
 		9FD0FEE31D2C011C006C59ED /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD0FEE21D2C011C006C59ED /* Workout.swift */; };
 		9FD0FEE51D2C0179006C59ED /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD0FEE41D2C0179006C59ED /* Location.swift */; };
+		9FD0FEE81D2D0A49006C59ED /* WorkoutInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD0FEE71D2D0A49006C59ED /* WorkoutInfoViewController.swift */; };
+		9FD0FEEA1D2D229B006C59ED /* StringHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD0FEE91D2D229B006C59ED /* StringHelpers.swift */; };
 		9FE97EA81D22C11E005CFC7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE97EA71D22C11E005CFC7A /* AppDelegate.swift */; };
 		9FE97EAD1D22C11E005CFC7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9FE97EAB1D22C11E005CFC7A /* Main.storyboard */; };
 		9FE97EAF1D22C11E005CFC7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FE97EAE1D22C11E005CFC7A /* Assets.xcassets */; };
@@ -31,6 +33,8 @@
 		9FD0FEE01D2BE8D1006C59ED /* WorkoutSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutSession.swift; sourceTree = "<group>"; };
 		9FD0FEE21D2C011C006C59ED /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		9FD0FEE41D2C0179006C59ED /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		9FD0FEE71D2D0A49006C59ED /* WorkoutInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutInfoViewController.swift; sourceTree = "<group>"; };
+		9FD0FEE91D2D229B006C59ED /* StringHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringHelpers.swift; sourceTree = "<group>"; };
 		9FE97EA41D22C11D005CFC7A /* WiseRunner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WiseRunner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE97EA71D22C11E005CFC7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FE97EAC1D22C11E005CFC7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -88,6 +92,14 @@
 			name = Entities;
 			sourceTree = "<group>";
 		};
+		9FD0FEEB1D2D229E006C59ED /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9FD0FEE91D2D229B006C59ED /* StringHelpers.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
 		9FE97E9B1D22C11D005CFC7A = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +127,7 @@
 				9FE97EBB1D22F9CA005CFC7A /* Controller */,
 				9FE97EBC1D22F9D2005CFC7A /* Storyboards */,
 				9FE97EBE1D22F9E9005CFC7A /* Supporting Files */,
+				9FD0FEEB1D2D229E006C59ED /* Extension */,
 			);
 			path = WiseRunner;
 			sourceTree = "<group>";
@@ -124,6 +137,7 @@
 			children = (
 				9FE97ECA1D2300D6005CFC7A /* WorkoutHistoryTableViewController.swift */,
 				9FEFC9761D2A9F1D0005CED2 /* WorkoutViewController.swift */,
+				9FD0FEE71D2D0A49006C59ED /* WorkoutInfoViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -302,7 +316,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FD0FEEA1D2D229B006C59ED /* StringHelpers.swift in Sources */,
 				9FE97EA81D22C11E005CFC7A /* AppDelegate.swift in Sources */,
+				9FD0FEE81D2D0A49006C59ED /* WorkoutInfoViewController.swift in Sources */,
 				9FE97ECD1D2301DA005CFC7A /* WorkoutType.swift in Sources */,
 				9FD0FEE51D2C0179006C59ED /* Location.swift in Sources */,
 				9FD0FEE31D2C011C006C59ED /* Workout.swift in Sources */,

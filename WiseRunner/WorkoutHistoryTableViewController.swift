@@ -12,8 +12,11 @@ import RealmSwift
 class WorkoutHistoryTableViewController: UITableViewController {
   
   private let startWorkoutSegueIdentifier = "Start Workout"
+  private let showInfoSegueIdentifier = "Show Info"
+  
   private let rowHeight: CGFloat = 125.0
   private var selectedWorkoutType = WorkoutType.Bicycle
+  private var selectedWorkout: Workout?
   
   var workouts: Results<Workout>?
   
@@ -75,11 +78,20 @@ class WorkoutHistoryTableViewController: UITableViewController {
   // MARK: - Navigations
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.identifier == startWorkoutSegueIdentifier {
-      
+    guard segue.identifier != nil else {
+      return
+    }
+    
+    switch segue.identifier! {
+    case startWorkoutSegueIdentifier:
       let navVC = segue.destinationViewController as! UINavigationController
       let destVC = navVC.viewControllers.first as! WorkoutViewController
       destVC.type = selectedWorkoutType
+    case showInfoSegueIdentifier:
+      let destVC = segue.destinationViewController as! WorkoutInfoViewController
+      destVC.workout = selectedWorkout
+    default:
+      print("Unknown segue identifier")
     }
   }
   
@@ -124,8 +136,10 @@ extension WorkoutHistoryTableViewController {
 extension WorkoutHistoryTableViewController {
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    
-    
+    if let workout = workouts?[indexPath.row] {
+      selectedWorkout = workout
+      performSegueWithIdentifier(showInfoSegueIdentifier, sender: self)
+    }
   }
   
 }

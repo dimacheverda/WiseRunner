@@ -69,8 +69,8 @@ class WorkoutViewController: UIViewController {
   func timerTick() {
     workoutSession.duration += 1
     
-    timeLabel.text = "\(workoutSession.duration) seconds"
-    distanceLabel.text = String(format: "%.1f meters", workoutSession.distance)
+    timeLabel.text = String.fromSeconds(workoutSession.duration)
+    distanceLabel.text = String(format: "%.1f m", workoutSession.distance)
     if let lastLocation = workoutSession.locations.last {
       speedLabel.text = String(format: "%.1f mps", lastLocation.speed)
     }
@@ -83,15 +83,6 @@ class WorkoutViewController: UIViewController {
     mapView.setRegion(MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(span, span)), animated: true)
   }
 
-  private func polyline(for locations: [CLLocation]) -> MKPolyline {
-    var coordinates: [CLLocationCoordinate2D] = []
-    
-    for location in locations {
-      coordinates.append(location.coordinate)
-    }
-    
-    return MKPolyline(coordinates: &coordinates, count: coordinates.count)
-  }
 }
 
 
@@ -105,20 +96,5 @@ extension WorkoutViewController: MKMapViewDelegate {
     centerMapView(at: userLocation)
     needToRecenterMapView = false
   }
-  
-  func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-    
-    if let polyline = overlay as? MKPolyline {
-      let polylineRenderer = MKPolylineRenderer(overlay: polyline)
-      polylineRenderer.strokeColor = UIColor.blueColor()
-      polylineRenderer.lineWidth = 3
-      
-      return polylineRenderer
-    }
-  
-    let renderer = MKOverlayRenderer(overlay: overlay)
-    
-    return renderer
-  }
-  
+
 }
