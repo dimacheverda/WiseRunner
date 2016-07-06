@@ -73,11 +73,12 @@ class WorkoutHistoryTableViewController: UITableViewController {
   }
   
   private func alertActionHandler(action: UIAlertAction) {
-    self.performSegueWithIdentifier(startWorkoutSegueIdentifier, sender: self)
-    
     if let title = action.title {
       self.selectedWorkoutType = WorkoutType(rawValue: WorkoutType.stringIndex(for: title))!
+      print(self.selectedWorkoutType)
     }
+    
+    self.performSegueWithIdentifier(startWorkoutSegueIdentifier, sender: self)
   }
   
   // MARK: - Navigations
