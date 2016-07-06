@@ -121,8 +121,8 @@ class WorkoutHistoryTableViewController: UITableViewController {
 extension WorkoutHistoryTableViewController {
   
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if workouts != nil {
-      return workouts!.count
+    if let count = workouts?.count {
+      return count
     }
     
     return 0
